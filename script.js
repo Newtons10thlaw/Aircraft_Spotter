@@ -267,4 +267,78 @@ document.addEventListener('keydown', (event) => {
   if (!locked && event.key.toLowerCase() === 'b') chooseAnswer('Boeing');
   if (locked && !ui.next.hidden && event.key === 'Enter') next();
 });
+
+const playerCounter = document.getElementById('players-stat');
+
+const counterURL =
+  'https://abacus.jasoncameron.dev';
+
+const counterKey =
+  'newtons10thlaw.github.io/plane-spotter-plays';
+
+let playCounted = false;
+
+try {
+  playCounted = sessionStorage.getItem('planeSpotterPlayed') === 'yes';
+} catch (error) {
+  console.warn('Session storage unavailable', error);
+}
+
+// Display the existing number of players.
+async function loadPlayerCount() {
+  try {
+    const response = await fetch(
+      `${counterURL}/get/${counterKey}`,
+      { cache: 'no-store' }
+    );
+
+    if (response.status === 404) {
+      if (!playCounted) playerCounter.textContent = '0';
+      return;
+    }
+
+    if (!response.ok) throw new Error('Counter unavailable');
+
+    const data = await response.json();
+
+    if (!playCounted) {
+      playerCounter.textContent = data.value.toLocaleString();
+    }
+  } catch (error) {
+    if (!playCounted) playerCounter.textContent = '—';
+    console.error(error);
+  }
+}
+
+// Count a player after their first answer.
+async function recordPlay() {
+  if (playCounted) return;
+
+  playCounted = true;
+
+  try {
+    sessionStorage.setItem('planeSpotterPlayed', 'yes');
+  } catch (error) {
+    console.warn('Session storage unavailable', error);
+  }
+
+  try {
+    const response = await fetch(
+      `${counterURL}/hit/${counterKey}`,
+      { cache: 'no-store' }
+    );
+
+    if (!response.ok) throw new Error('Counter unavailable');
+
+    const data = await response.json();
+
+    playerCounter.textContent = data.value.toLocaleString();
+  } catch (error) {
+    console.error(error);
+    playerCounter.textContent = '—';
+  }
+}
+
+loadPlayerCount();
+
 initialise();
