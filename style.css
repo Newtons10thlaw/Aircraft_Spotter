@@ -104,3 +104,19 @@ kbd { font-family:inherit; display:inline-grid; place-items:center; width:19px; 
 @media (max-width:760px) { .site-shell { padding:0 16px; } .topbar { height:77px; } .topbar-right { font-size:9px; } .edition,.top-separator { display:none; } .brand { font-size:18px; } .brand-icon { width:36px; height:36px; } .intro { flex-direction:column; gap:26px; padding:35px 0 28px; } h1 { font-size:clamp(55px,12vw,80px); letter-spacing:-4px; } .stats { align-self:stretch; } .stat { flex:1; margin:0; min-width:0; padding-left:14px; } .stat:first-child { padding-left:0; border-left:0; } .stat strong { font-size:22px; } .game-card { display:block; } .photo-column { border-right:0; border-bottom:1px solid #3a485a; padding:13px; } .photo-meta { margin-bottom:13px; font-size:9px; } .photo-stage { aspect-ratio:1.3; min-height:245px; max-height:460px; } .photo-footer { font-size:9px; padding-top:12px; } .answer-column { padding:21px 19px 0; } .question-block { margin-top:15px; } .question-block h2 { font-size:35px; margin:12px 0; } .question-block h2 br { display:none; } .answer-buttons { margin-top:20px; grid-template-columns:1fr 1fr; gap:9px; } .answer-btn { min-height:98px; padding:12px; gap:9px; align-items:flex-start; flex-wrap:wrap; } .answer-letter { width:34px; height:34px; flex-basis:34px; font-size:21px; } .answer-name { font-size:15px; align-self:center; } .answer-name small { display:none; } .answer-arrow { display:none; } .bottom-action { padding-top:21px; padding-bottom:20px; } .game-progress { margin:0 -19px; } .below-game { flex-direction:column; gap:8px; font-size:9px; } .footer { flex-direction:column; gap:8px; } }
 @media (max-width:400px) { .topbar-right { font-size:0; } .topbar-right .online-dot { width:8px; height:8px; } .stats .stat>span { font-size:8px; } .photo-meta>span:last-child { font-size:0; } .photo-meta .sighting-dot { display:inline-block; } .photo-stage { min-height:208px; } .answer-name { font-size:13px; } .eyebrow { font-size:9px; letter-spacing:2px; } .summary { padding:25px; } .summary h2 { font-size:36px; } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none!important; animation:none!important; } }
+@media (max-width: 760px) {
+  .stats {
+    flex-wrap: wrap;
+    gap: 20px 0;
+  }
+
+  .stats .stat {
+    flex: 0 0 50%;
+    box-sizing: border-box;
+  }
+
+  .stats .stat:nth-child(odd) {
+    border-left: none;
+    padding-left: 0;
+  }
+}
