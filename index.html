@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c1424" />
+  <meta name="description" content="Can you spot the difference? A free aircraft-identification quiz using real photos from Wikimedia Commons." />
+  <title>PlaneSpotter — Boeing or Airbus?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="PlaneSpotter home">
+        <span class="brand-icon" aria-hidden="true">✈</span>
+        <span>PLANE<span class="brand-accent">SPOTTER</span><small>THE AIRCRAFT ID GAME</small></span>
+      </a>
+      <div class="topbar-right"><span class="online-dot"></span> LIVE AIRCRAFT PHOTOS <span class="top-separator"></span> <span class="edition">VOL. 01</span></div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <span class="eyebrow"><span class="orange-line"></span> AVIATION IDENTIFICATION CHALLENGE</span>
+          <h1>BOEING <em>OR</em><br /><span>AIRBUS?</span></h1>
+          <p>Two manufacturers. One aircraft. <strong>Can you tell them apart?</strong></p>
+        </div>
+        <div class="stats" aria-label="Game statistics">
+          <div class="stat"><span>SCORE</span><strong id="score-stat">0 / 0</strong></div>
+          <div class="stat"><span>STREAK</span><strong id="streak-stat">0 <span class="stat-symbol">↗</span></strong></div>
+          <div class="stat"><span>PERSONAL BEST</span><strong id="best-stat">—</strong></div>
+        </div>
+      </section>
+
+      <section class="game-card" id="quiz-view" aria-label="Aircraft quiz">
+        <div class="photo-column">
+          <div class="photo-meta"><span id="round-label">AIRCRAFT 01 <span class="muted">/ 10</span></span><span><span class="sighting-dot"></span> VISUAL IDENTIFICATION</span></div>
+          <div class="photo-stage image-loading" id="photo-stage">
+            <img id="photo-backdrop" class="photo-backdrop" alt="" aria-hidden="true" />
+            <img id="plane-photo" class="plane-photo" alt="Aircraft to identify" />
+            <div class="photo-wait" id="photo-wait"><span class="spinner"></span><span>FINDING YOUR NEXT AIRCRAFT…</span></div>
+            <div class="photo-gradient" aria-hidden="true"></div>
+            <div class="photo-tag">✦ &nbsp; SPOT THE DIFFERENCE</div>
+          </div>
+          <div class="photo-footer">
+            <span><span class="tiny-square"></span> REAL AIRCRAFT · REAL PHOTOGRAPHS</span>
+            <span id="photo-counter">01 — 10</span>
+          </div>
+        </div>
+
+        <div class="answer-column">
+          <div class="answer-top"><span>MAKE YOUR CALL</span><span class="answer-top-cross">✳</span></div>
+          <div class="question-block">
+            <div class="question-number">01 / IDENTIFY</div>
+            <h2>Who's the<br /><span>manufacturer?</span></h2>
+            <p>Study the nose, cockpit windows, wings and engines. Then make your pick.</p>
+          </div>
+          <div class="answer-buttons" id="answer-buttons">
+            <button class="answer-btn" id="airbus-btn" type="button" data-answer="Airbus" disabled>
+              <span class="answer-letter">A</span><span class="answer-name">AIRBUS <small>EUROPEAN MANUFACTURER</small></span><span class="answer-arrow">↗</span>
+            </button>
+            <button class="answer-btn" id="boeing-btn" type="button" data-answer="Boeing" disabled>
+              <span class="answer-letter">B</span><span class="answer-name">BOEING <small>AMERICAN MANUFACTURER</small></span><span class="answer-arrow">↗</span>
+            </button>
+          </div>
+          <div class="feedback" id="feedback" role="status" aria-live="polite" hidden>
+            <div class="feedback-heading" id="feedback-heading"></div>
+            <div class="feedback-model" id="feedback-model"></div>
+            <p id="feedback-tip"></p>
+            <div class="credit-line" id="credit-line"></div>
+          </div>
+          <div class="bottom-action">
+            <button class="next-btn" id="next-btn" type="button" hidden>NEXT AIRCRAFT <span>↗</span></button>
+            <button class="retry-btn" id="retry-btn" type="button" hidden>RETRY LOADING PHOTOS ↻</button>
+            <p class="keyboard-hint" id="keyboard-hint">PRESS <kbd>A</kbd> OR <kbd>B</kbd> TO ANSWER</p>
+          </div>
+          <div class="game-progress"><div id="progress-bar" class="game-progress-fill"></div></div>
+        </div>
+      </section>
+
+      <section class="summary" id="summary-view" hidden>
+        <span class="eyebrow"><span class="orange-line"></span> RUNWAY CLEARED</span>
+        <div class="summary-icon">✈</div>
+        <h2 id="summary-heading">Nicely spotted.</h2>
+        <p id="summary-subheading">You've completed the identification challenge.</p>
+        <div class="summary-score"><strong id="summary-number">0<span> / 10</span></strong><span>CORRECT IDENTIFICATIONS</span></div>
+        <button class="next-btn replay-btn" id="play-again-btn" type="button">PLAY ANOTHER ROUND <span>↗</span></button>
+      </section>
+
+      <div class="below-game"><span><span class="amber-star">✳</span> A GOOD SPOTTER KNOWS THE SMALL DETAILS.</span><span>PHOTOS SERVED LIVE VIA WIKIPEDIA / WIKIMEDIA COMMONS</span></div>
+    </main>
+
+    <footer class="footer"><span>PLANE<span class="brand-accent">SPOTTER</span> © 2026</span><span>BUILT FOR CURIOUS AVIATION ENTHUSIASTS.</span></footer>
+  </div>
+</body>
+</html>
