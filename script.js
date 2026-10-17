@@ -194,6 +194,8 @@ function showRound() {
 function chooseAnswer(guess) {
   if (locked || !roundCards[position]) return;
   locked = true;
+
+  recordPlay();
   const card = roundCards[position];
   const success = guess === card.brand;
   answered++;
